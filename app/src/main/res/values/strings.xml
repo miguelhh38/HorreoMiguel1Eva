@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">HorreoMiguel1Eva</string>
+    <string name="app_calcu">Calculadora</string>
+    <string name="app_contact">Contacto</string>
+    <!-- MAIN ACTIVITY -->
+
+    <string name="name">Miguel Horreo Hevia</string>
+
+    <!-- CALCULADORA ACTIVITY -->
+    <string name="bborrarname">BORRAR</string>
+    <string name="binvname">INV</string>
+    <string name="bbarraname">/</string>
+    <string name="bmultiname">X</string>
+    <string name="bmenosname">-</string>
+    <string name="bmasname">+</string>
+    <string name="bigualname">=</string>
+    <string name="bpunto">.</string>
+
+    <string name="b0name">0</string>
+    <string name="b1name">1</string>
+    <string name="b2name">2</string>
+    <string name="b3name">3</string>
+    <string name="b4name">4</string>
+    <string name="b5name">5</string>
+    <string name="b6name">6</string>
+    <string name="b7name">7</string>
+    <string name="b8name">8</string>
+    <string name="b9name">9</string>
+
+    <!--CONTACTO ACTIVITY-->
+    <string name="tituloname">Título:</string>
+    <string name="correoname">Correo electrónico:</string>
+    <string name="asuntoname">Asunto:</string>
+    <string name="puntuacionname">Puntuación:</string>
+    <string name="contenidoname">Contenido:</string>
+    <string name="benviarname">ENVIAR CORREO</string>
+
+
+</resources>
