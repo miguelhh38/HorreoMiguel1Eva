@@ -39,6 +39,7 @@ public class CalcuActivity extends AppCompatActivity {
 
     boolean pulsado = false;
     boolean punto = false;
+    boolean division0 = false;
 
 
     @Override
@@ -87,6 +88,7 @@ public class CalcuActivity extends AppCompatActivity {
                     case 2:
                         numero2 = Double.parseDouble(pantalla.getText().toString());
                         resultado = numero1 - numero2;
+
                         break;
                     case 3:
                         numero2 = Double.parseDouble(pantalla.getText().toString());
@@ -94,16 +96,24 @@ public class CalcuActivity extends AppCompatActivity {
                         break;
                     case 4:
                         numero2 = Double.parseDouble(pantalla.getText().toString());
-                        resultado = numero1 / numero2;
+                        if (numero2 == 0) {
+                            division0 = true;
+                        } else {
+                            resultado = numero1 / numero2;
+                        }
                         break;
 
                 }
 
-                if (operadorActual != 0) {
-                    if (resultado - Math.floor(resultado) == 0) {
-                        pantalla.setText(String.valueOf(Math.round(resultado)));
-                    } else {
-                        pantalla.setText(String.valueOf(resultado));
+                if (division0 == true) {
+                    pantalla.setText("No se puede dividir entre 0");
+                } else {
+                    if (operadorActual != 0) {
+                        if (resultado - Math.floor(resultado) == 0) {
+                            pantalla.setText(String.valueOf(Math.round(resultado)));
+                        } else {
+                            pantalla.setText(String.valueOf(resultado));
+                        }
                     }
                 }
 
@@ -112,9 +122,14 @@ public class CalcuActivity extends AppCompatActivity {
         bbarra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operadorActual = 4;
-                numero1 = Double.parseDouble(pantalla.getText().toString());
-                pulsado = true;
+                if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                    division0 = false;
+                    pantalla.setText("0");
+                } else {
+                    operadorActual = 4;
+                    numero1 = Double.parseDouble(pantalla.getText().toString());
+                    pulsado = true;
+                }
 
             }
         });
@@ -122,18 +137,28 @@ public class CalcuActivity extends AppCompatActivity {
         bmulti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operadorActual = 3;
-                numero1 = Double.parseDouble(pantalla.getText().toString());
-                pulsado = true;
+                if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                    division0 = false;
+                    pantalla.setText("0");
+                } else {
+                    operadorActual = 3;
+                    numero1 = Double.parseDouble(pantalla.getText().toString());
+                    pulsado = true;
+                }
 
             }
         });
         bresta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operadorActual = 2;
-                numero1 = Double.parseDouble(pantalla.getText().toString());
-                pulsado = true;
+                if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                    division0 = false;
+                    pantalla.setText("0");
+                } else {
+                    operadorActual = 2;
+                    numero1 = Double.parseDouble(pantalla.getText().toString());
+                    pulsado = true;
+                }
 
             }
         });
@@ -142,9 +167,14 @@ public class CalcuActivity extends AppCompatActivity {
         bsuma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                operadorActual = 1;
-                numero1 = Double.parseDouble(pantalla.getText().toString());
-                pulsado = true;
+                if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                    division0 = false;
+                    pantalla.setText("0");
+                } else {
+                    operadorActual = 1;
+                    numero1 = Double.parseDouble(pantalla.getText().toString());
+                    pulsado = true;
+                }
 
             }
         });
@@ -168,6 +198,7 @@ public class CalcuActivity extends AppCompatActivity {
                 numero2 = null;
                 pantalla.setText("0");
                 punto = false;
+                division0 = false;
             }
         });
 
@@ -179,7 +210,11 @@ public class CalcuActivity extends AppCompatActivity {
                         pantalla.setText("0.");
                         pulsado = false;
                     } else {
-                        pantalla.setText(pantalla.getText() + ".");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("0.");
+                        } else {
+                            pantalla.setText(pantalla.getText() + ".");
+                        }
                     }
                     punto = true;
                 }
@@ -196,8 +231,13 @@ public class CalcuActivity extends AppCompatActivity {
                 } else {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("0");
-                    } else
-                        pantalla.setText(pantalla.getText() + "0");
+                    } else {
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("0");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "0");
+                        }
+                    }
                 }
             }
         });
@@ -212,7 +252,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("1");
                     } else {
-                        pantalla.setText(pantalla.getText() + "1");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("1");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "1");
+                        }
                     }
                 }
             }
@@ -229,7 +273,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("2");
                     } else {
-                        pantalla.setText(pantalla.getText() + "2");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("2");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "2");
+                        }
                     }
                 }
             }
@@ -246,7 +294,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("3");
                     } else {
-                        pantalla.setText(pantalla.getText() + "3");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("3");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "3");
+                        }
                     }
                 }
             }
@@ -264,7 +316,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("4");
                     } else {
-                        pantalla.setText(pantalla.getText() + "4");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("4");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "4");
+                        }
                     }
                 }
             }
@@ -281,7 +337,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("5");
                     } else {
-                        pantalla.setText(pantalla.getText() + "5");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("5");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "5");
+                        }
                     }
                 }
             }
@@ -298,7 +358,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("6");
                     } else {
-                        pantalla.setText(pantalla.getText() + "6");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("6");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "6");
+                        }
                     }
                 }
             }
@@ -315,7 +379,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("7");
                     } else {
-                        pantalla.setText(pantalla.getText() + "7");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("7");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "7");
+                        }
                     }
                 }
             }
@@ -332,7 +400,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("8");
                     } else {
-                        pantalla.setText(pantalla.getText() + "8");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("8");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "8");
+                        }
                     }
                 }
             }
@@ -349,7 +421,11 @@ public class CalcuActivity extends AppCompatActivity {
                     if (pantalla.getText().equals("0")) {
                         pantalla.setText("9");
                     } else {
-                        pantalla.setText(pantalla.getText() + "9");
+                        if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                            pantalla.setText("9");
+                        } else {
+                            pantalla.setText(pantalla.getText() + "9");
+                        }
                     }
                 }
             }

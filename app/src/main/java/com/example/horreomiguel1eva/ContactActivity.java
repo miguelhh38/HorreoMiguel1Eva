@@ -27,6 +27,8 @@ public class ContactActivity extends AppCompatActivity {
 
     Button enviar;
 
+
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
