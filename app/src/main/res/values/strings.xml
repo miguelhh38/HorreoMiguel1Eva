@@ -5,6 +5,7 @@
     <!-- MAIN ACTIVITY -->
 
     <string name="name">Miguel Horreo Hevia</string>
+    <string name="menu">Menu Contextual</string>
 
     <!-- CALCULADORA ACTIVITY -->
     <string name="bborrarname">BORRAR</string>

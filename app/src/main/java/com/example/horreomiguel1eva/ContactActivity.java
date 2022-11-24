@@ -8,6 +8,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +52,8 @@ public class ContactActivity extends AppCompatActivity {
 
             }
         });
+
+
 
         titulo = (EditText) findViewById(R.id.tituloEditText);
         correo = (EditText) findViewById(R.id.correoEditText);
@@ -111,15 +115,7 @@ public class ContactActivity extends AppCompatActivity {
                         intent1.putExtra(Intent.EXTRA_TEXT, scontenido);
                         intent1.setType("message/rfc822");
                         startActivity(Intent.createChooser(intent1, "Elije un cliente de Correo:"));
-
-
                     }
-
-
-
-
-
-
                 } else {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(ContactActivity.this);
                     alertDialog.setMessage(errores + "\n¿Desea corregir los cambios?").setCancelable(true).setPositiveButton("Si", new DialogInterface.OnClickListener() {
@@ -139,15 +135,42 @@ public class ContactActivity extends AppCompatActivity {
                     titulo.show();
                 }
 
-
-
-
-
             }
         });
 
-
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu1, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.calcu:
+                Intent intent = new Intent(ContactActivity.this, CalcuActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.principal:
+                Intent intent1 = new Intent(ContactActivity.this, MainActivity.class);
+                startActivity(intent1);
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Intent volver = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(volver);
+    }
+
+
+
 
 
 }

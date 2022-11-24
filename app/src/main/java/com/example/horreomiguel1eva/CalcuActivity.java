@@ -2,7 +2,10 @@ package com.example.horreomiguel1eva;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -95,6 +98,7 @@ public class CalcuActivity extends AppCompatActivity {
                         break;
 
                 }
+
                 if (operadorActual != 0) {
                     if (resultado - Math.floor(resultado) == 0) {
                         pantalla.setText(String.valueOf(Math.round(resultado)));
@@ -351,4 +355,29 @@ public class CalcuActivity extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu1, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.principal:
+                Intent intent = new Intent(CalcuActivity.this, MainActivity.class);
+                startActivity(intent);
+            return true;
+
+            case R.id.contact:
+                Intent intent1 = new Intent(CalcuActivity.this, ContactActivity.class);
+                startActivity(intent1);
+            return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
 }
