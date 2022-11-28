@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuInflater;
@@ -66,13 +67,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.calcu:
+            case R.id.calcu_1:
                 Intent intent = new Intent(MainActivity.this, CalcuActivity.class);
                 startActivity(intent);
             return true;
-            case R.id.contact:
+            case R.id.calcu_2:
+                Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://web2.0calc.es/"));
+                startActivity(i);
+            return true;
+            case R.id.contact_1:
                 Intent intent1 = new Intent(MainActivity.this, ContactActivity.class);
                 startActivity(intent1);
+            return true;
+            case R.id.contact_2:
+                Intent i2 = new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/"));
+                startActivity(i2);
             return true;
 
             default: return super.onOptionsItemSelected(item);

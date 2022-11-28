@@ -2,6 +2,7 @@ package com.example.horreomiguel1eva;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -31,6 +32,7 @@ public class CalcuActivity extends AppCompatActivity {
     Button bigual;
     Button bmulti;
     Button bbarra;
+    Button bcuadrado;
 
 
     Double numero1, numero2, resultado;
@@ -42,6 +44,7 @@ public class CalcuActivity extends AppCompatActivity {
     boolean division0 = false;
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +72,7 @@ public class CalcuActivity extends AppCompatActivity {
         bigual = (Button) findViewById(R.id.bigual);
         bmulti = (Button) findViewById(R.id.bmulti);
         bbarra = (Button) findViewById(R.id.bbarra);
-
+        bcuadrado = (Button) findViewById(R.id.bcuadrado);
 
 
         bigual.setOnClickListener(new View.OnClickListener() {
@@ -119,6 +122,25 @@ public class CalcuActivity extends AppCompatActivity {
 
             }
         });
+
+        bcuadrado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (pantalla.getText().equals("No se puede dividir entre 0")) {
+                    division0 = false;
+                    pantalla.setText("0");
+                } else {
+                    numero1 = (Double.parseDouble(pantalla.getText().toString()));
+                    numero1 = numero1 * numero1;
+                    if (numero1 - Math.floor(numero1) == 0) {
+                        pantalla.setText(String.valueOf(Math.round(numero1)));
+                    } else {
+                        pantalla.setText(String.valueOf(numero1));
+                    }
+                }
+            }
+        });
+
         bbarra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
